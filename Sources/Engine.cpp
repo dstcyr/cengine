@@ -34,11 +34,60 @@ std::map<size_t, FC_Font*> fontCache;
 std::map<size_t, Mix_Chunk*> soundCache;
 std::map<size_t, Mix_Music*> musicCache;
 
-const NColor& NColor::Red = NColor(255, 0, 0);
-const NColor& NColor::Green = NColor(0, 255, 0);
-const NColor& NColor::Blue = NColor(0, 0, 255);
 const NColor& NColor::Black = NColor(0, 0, 0);
-const NColor& NColor::White = NColor(255, 255, 255);
+const NColor& NColor::MediumBlue = NColor(0, 42, 136);
+const NColor& NColor::DarkBlue = NColor(0, 0, 172);
+const NColor& NColor::LightBlue = NColor(68, 40, 188);
+const NColor& NColor::Turquoise = NColor(148, 120, 188);
+const NColor& NColor::Purple = NColor(168, 0, 32);
+const NColor& NColor::DarkPurple = NColor(120, 0, 130);
+const NColor& NColor::LightPurple = NColor(168, 0, 166);
+const NColor& NColor::DarkGreen = NColor(0, 136, 0);
+const NColor& NColor::MediumGreen = NColor(0, 168, 0);
+const NColor& NColor::LightGreen = NColor(68, 168, 0);
+const NColor& NColor::DarkGray = NColor(0, 120, 120);
+const NColor& NColor::MediumGray = NColor(0, 0, 0);
+const NColor& NColor::LightGray = NColor(168, 168, 168);
+const NColor& NColor::White = NColor(252, 252, 252);
+const NColor& NColor::DarkBrown = NColor(96, 64, 0);
+const NColor& NColor::ReddishBrown = NColor(188, 112, 0);
+const NColor& NColor::LightBrown = NColor(252, 172, 0);
+const NColor& NColor::DarkOrange = NColor(248, 56, 0);
+const NColor& NColor::Orange = NColor(252, 88, 88);
+const NColor& NColor::LightOrange = NColor(252, 120, 0);
+const NColor& NColor::DarkYellow = NColor(120, 88, 0);
+const NColor& NColor::LightYellow = NColor(252, 248, 120);
+const NColor& NColor::Yellow = NColor(252, 252, 0);
+const NColor& NColor::DarkPink = NColor(188, 0, 136);
+const NColor& NColor::LightPink = NColor(252, 120, 172);
+const NColor& NColor::Pink = NColor(252, 88, 136);
+const NColor& NColor::DarkRed = NColor(120, 0, 0);
+const NColor& NColor::LightRed = NColor(252, 60, 60);
+const NColor& NColor::Red = NColor(252, 0, 0);
+const NColor& NColor::LightBeige = NColor(252, 252, 188);
+const NColor& NColor::Tan = NColor(200, 152, 52);
+const NColor& NColor::PaleYellow = NColor(252, 252, 120);
+const NColor& NColor::DarkCream = NColor(200, 252, 116);
+const NColor& NColor::LightCream = NColor(252, 252, 168);
+const NColor& NColor::DarkTurquoise = NColor(60, 188, 252);
+const NColor& NColor::LightTurquoise = NColor(136, 252, 252);
+const NColor& NColor::DarkSkyBlue = NColor(48, 120, 252);
+const NColor& NColor::LightSkyBlue = NColor(148, 208, 252);
+const NColor& NColor::DarkLavender = NColor(168, 0, 252);
+const NColor& NColor::LightLavender = NColor(200, 120, 252);
+const NColor& NColor::DarkPurpleBlue = NColor(168, 52, 252);
+const NColor& NColor::LightPurpleBlue = NColor(188, 148, 252);
+const NColor& NColor::DarkForestGreen = NColor(0, 168, 0);
+const NColor& NColor::LightForestGreen = NColor(0, 252, 0);
+const NColor& NColor::DarkOliveGreen = NColor(76, 196, 48);
+const NColor& NColor::LightOliveGreen = NColor(120, 252, 120);
+const NColor& NColor::DarkYellowGreen = NColor(0, 188, 0);
+const NColor& NColor::LightYellowGreen = NColor(0, 252, 0);
+const NColor& NColor::DarkLimeGreen = NColor(40, 188, 80);
+const NColor& NColor::LightLimeGreen = NColor(120, 252, 120);
+const NColor& NColor::DarkPeach = NColor(252, 168, 0);
+const NColor& NColor::LightPeach = NColor(252, 188, 120);
+const NColor& NColor::DarkBeige = NColor(252, 252, 200);
 
 NColor::NColor() :
     NColor(0, 0, 0, 255)
@@ -292,15 +341,13 @@ bool Engine::GetKeyUp(EKey key)
 
 void Engine::FillRect(float x, float y, float w, float h, const NColor& color)
 {
-    SDL_Rect rect = {
+    FillRect(
         static_cast<int>(x),
         static_cast<int>(y),
         static_cast<int>(w),
-        static_cast<int>(h)
-    };
-
-    SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha);
-    SDL_RenderFillRect(renderer, &rect);
+        static_cast<int>(h),
+        color
+    );
 }
 
 void Engine::DrawRect(float x, float y, float w, float h, const NColor& color)
@@ -309,8 +356,8 @@ void Engine::DrawRect(float x, float y, float w, float h, const NColor& color)
     int fy = static_cast<int>(y);
     int fw = static_cast<int>(w);
     int fh = static_cast<int>(h);
-    
-    DrawRect(fx, fy, fw, fh, color );
+
+    DrawRect(fx, fy, fw, fh, color);
 }
 
 void Engine::DrawRect(int x, int y, int w, int h, const NColor& color)
@@ -389,6 +436,42 @@ void Engine::DrawTexture(size_t id, bool hflip, bool vflip, const NColor& color)
     SDL_RenderCopyEx(renderer, texture, nullptr, nullptr, 0.0f, nullptr, renderFlip);
 }
 
+void Engine::DrawTexture(size_t id, int x, int y, int w, int h)
+{
+    DrawTexture(
+        id,
+        Rect<float>(
+            static_cast<float>(x),
+            static_cast<float>(y),
+            static_cast<float>(w),
+            static_cast<float>(h)
+        ),
+        0.0,
+        false,
+        false,
+        NColor::White
+    );
+}
+
+void Engine::DrawTexture(size_t id, float x, float y, float w, float h)
+{
+    DrawTexture(
+        id,
+        Rect<float>(x, y, w, h),
+        0.0,
+        false,
+        false,
+        NColor::White
+    );
+}
+
+void Engine::DrawTexture(size_t id, int x, int y)
+{
+    int w, h;
+    GetTextureSize(id, &w, &h);
+    DrawTexture(id, x, y, w, h);
+}
+
 void Engine::DrawTexture(size_t id, const Rect<float>& dst, double angle, bool hflip, bool vflip, const NColor& color)
 {
     SDL_Rect destination = {
@@ -415,6 +498,11 @@ void Engine::DrawTexture(size_t id, const Rect<float>& dst, double angle, bool h
     SDL_SetTextureAlphaMod(texture, color.alpha);
     SDL_SetTextureColorMod(texture, color.red, color.green, color.blue);
     SDL_RenderCopyEx(renderer, texture, nullptr, &destination, angle, nullptr, renderFlip);
+}
+
+void Engine::DrawTexture(size_t id, const Rect<float>& dst)
+{
+    DrawTexture(id, dst, 0.0, false, false, NColor::White);
 }
 
 void Engine::DrawTexture(size_t id, const Rect<int>& src, const Rect<float>& dst, double angle, bool hflip, bool vflip, const NColor& color)
@@ -507,6 +595,13 @@ size_t Engine::LoadMusic(const std::string& filename)
     return 0;
 }
 
+void Engine::FillRect(int x, int y, int w, int h, const NColor& color)
+{
+    SDL_Rect rect = { x, y, w, h };
+    SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha);
+    SDL_RenderFillRect(renderer, &rect);
+}
+
 size_t Engine::LoadSound(const std::string& filename)
 {
     const size_t _sfxId = std::hash<std::string>()(filename);
@@ -570,4 +665,17 @@ void Engine::SetVolume(int volume)
 void Engine::SetVolume(size_t soundId, int volume)
 {
     Mix_VolumeChunk(soundCache[soundId], volume);
+}
+
+void Engine::GetTextureSize(size_t id, int* w, int* h)
+{
+    if (textureCache.count(id) > 0)
+    {
+        SDL_QueryTexture(textureCache[id], nullptr, nullptr, w, h);
+    }
+    else
+    {
+        *w = 0;
+        *h = 0;
+    }
 }

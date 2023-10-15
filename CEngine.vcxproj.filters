@@ -30,6 +30,15 @@
     <ClCompile Include="Sources\Delegate.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Collision.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Vec2D.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\MathUtils.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\File.h">
@@ -54,6 +63,15 @@
       <Filter>Includes</Filter>
     </ClInclude>
     <ClInclude Include="Includes\Delegate.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Collision.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Vec2D.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\MathUtils.h">
       <Filter>Includes</Filter>
     </ClInclude>
   </ItemGroup>

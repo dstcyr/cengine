@@ -147,23 +147,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Collision.cpp" />
     <ClCompile Include="Sources\Delegate.cpp" />
     <ClCompile Include="Sources\Engine.cpp" />
     <ClCompile Include="Sources\File.cpp" />
     <ClCompile Include="Sources\Log.cpp" />
+    <ClCompile Include="Sources\MathUtils.cpp" />
     <ClCompile Include="Sources\SDL_FontCache.c" />
     <ClCompile Include="Sources\StateMachine.cpp" />
     <ClCompile Include="Sources\tinyxml2.cpp" />
+    <ClCompile Include="Sources\Vec2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Includes\Collision.h" />
     <ClInclude Include="Includes\Delegate.h" />
     <ClInclude Include="Includes\Engine.h" />
     <ClInclude Include="Includes\File.h" />
     <ClInclude Include="Includes\Log.h" />
+    <ClInclude Include="Includes\MathUtils.h" />
     <ClInclude Include="Includes\Rect.h" />
     <ClInclude Include="Includes\SDL_FontCache.h" />
     <ClInclude Include="Includes\StateMachine.h" />
     <ClInclude Include="Includes\tinyxml2.h" />
+    <ClInclude Include="Includes\Vec2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
