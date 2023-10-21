@@ -1,7 +1,8 @@
 #pragma once
-#include <stdint.h>
+#include <cstdint>
 #include <string>
 #include "Rect.h"
+#include "Vec2D.h"
 #include <map>
 
 typedef enum
@@ -115,17 +116,22 @@ namespace Engine
     void DrawTexture(size_t id, int x, int y, int w, int h);
     void DrawTexture(size_t id, float x, float y, float w, float h);
     void DrawTexture(size_t id, int x, int y);
+    void DrawTexture(size_t id, float x, float y);
     void DrawTexture(size_t id, const Rect<float>& dst, double angle, bool hflip, bool vflip, const NColor& color);
     void DrawTexture(size_t id, const Rect<float>& dst);
     void DrawTexture(size_t id, const Rect<int>& src, const Rect<float>& dst, double angle, bool hflip, bool vflip, const NColor& color);
     void DrawPoint(float x, float y, const NColor& color);
     void DrawCircle(float x, float y, float r, const NColor& color);
     void DrawLine(float x1, float y1, float x2, float y2, const NColor& color);
+    void DrawBezier(const Vec2D& P0, const Vec2D& P1, const Vec2D& P2, const Vec2D& P3, float d, const NColor& color);
+    void DrawBSpline(const Vec2D& P0, const Vec2D& P1, const Vec2D& P2, const Vec2D& P3, float d, const NColor& color);
+    void DrawCatmullRom(const Vec2D& P0, const Vec2D& P1, const Vec2D& P2, const Vec2D& P3, float d, const NColor& color);
     void GetTextureSize(size_t id, int* w, int* h);
     void PlayMusic(size_t id);
     void PlayMusic(size_t id, int loop);
     void PlaySFX(size_t id);
     void PlaySFX(size_t id, int loop);
+    void PlaySFX(size_t id, int channel, int loop);
     void PauseMusic();
     void StopMusic();
     void ResumeMusic();

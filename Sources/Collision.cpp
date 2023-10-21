@@ -90,6 +90,11 @@ bool Engine::CheckRects(float r1x, float r1y, float r1w, float r1h, float r2x, f
     return (r1x <= (r2x + r2w) && (r1x + r1w) >= r2x && r1y <= (r2y + r2h) && (r1y + r1h) >= r2y);
 }
 
+bool Engine::CheckRects(const Rect<float>& r1, const Rect<float>& r2)
+{
+    return CheckRects(r1.x, r1.y, r1.w, r1.h, r2.x, r2.y, r2.w, r2.h);
+}
+
 /// -------------------------------------------------------------------------------------
 /// <summary>
 /// Checks the collisions between a rectangle and a circle

@@ -6,12 +6,13 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 #include "SDL_FontCache.h"
-#include <time.h>
+#include <ctime>
 #include <Windows.h>
 #include "StateMachine.h"
 #include <map>
 #include <string>
 #include "tinyxml2.h"
+#include "MathUtils.h"
 
 using namespace tinyxml2;
 
@@ -45,8 +46,8 @@ const NColor& NColor::LightPurple = NColor(168, 0, 166);
 const NColor& NColor::DarkGreen = NColor(0, 136, 0);
 const NColor& NColor::MediumGreen = NColor(0, 168, 0);
 const NColor& NColor::LightGreen = NColor(68, 168, 0);
-const NColor& NColor::DarkGray = NColor(0, 120, 120);
-const NColor& NColor::MediumGray = NColor(0, 0, 0);
+const NColor& NColor::DarkGray = NColor(120, 120, 120);
+const NColor& NColor::MediumGray = NColor(100, 100, 100);
 const NColor& NColor::LightGray = NColor(168, 168, 168);
 const NColor& NColor::White = NColor(252, 252, 252);
 const NColor& NColor::DarkBrown = NColor(96, 64, 0);
@@ -472,6 +473,15 @@ void Engine::DrawTexture(size_t id, int x, int y)
     DrawTexture(id, x, y, w, h);
 }
 
+void Engine::DrawTexture(size_t id, float x, float y)
+{
+    DrawTexture(
+        id,
+        static_cast<int>(x),
+        static_cast<int>(y)
+    );
+}
+
 void Engine::DrawTexture(size_t id, const Rect<float>& dst, double angle, bool hflip, bool vflip, const NColor& color)
 {
     SDL_Rect destination = {
@@ -574,6 +584,54 @@ void Engine::DrawLine(float x1, float y1, float x2, float y2, const NColor& colo
         static_cast<int>(y2));
 }
 
+void Engine::DrawBezier(const Vec2D& P0, const Vec2D& P1, const Vec2D& P2, const Vec2D& P3, float d, const NColor& color)
+{
+    float currentTime = 0.0f;
+    while (currentTime < d)
+    {
+        Vec2D pos1 = Engine::BezierInterp(currentTime, P0, P1, P2, P3, d);
+        Engine::DrawPoint(pos1.x, pos1.y, color);
+        currentTime += 0.0016f;
+    }
+
+    DrawCircle(P0.x, P0.y, 5.0f, NColor::LightGreen);
+    DrawCircle(P1.x, P1.y, 5.0f, NColor::White);
+    DrawCircle(P2.x, P2.y, 5.0f, NColor::White);
+    DrawCircle(P3.x, P3.y, 5.0f, NColor::Yellow);
+}
+
+void Engine::DrawBSpline(const Vec2D& P0, const Vec2D& P1, const Vec2D& P2, const Vec2D& P3, float d, const NColor& color)
+{
+    float currentTime = 0.0f;
+    while (currentTime < d)
+    {
+        Vec2D pos1 = Engine::BSplineInterp(currentTime, P0, P1, P2, P3, d);
+        Engine::DrawPoint(pos1.x, pos1.y, color);
+        currentTime += 0.0016f;
+    }
+
+    DrawCircle(P0.x, P0.y, 5.0f, NColor::LightGreen);
+    DrawCircle(P1.x, P1.y, 5.0f, NColor::White);
+    DrawCircle(P2.x, P2.y, 5.0f, NColor::White);
+    DrawCircle(P3.x, P3.y, 5.0f, NColor::Yellow);
+}
+
+void Engine::DrawCatmullRom(const Vec2D& P0, const Vec2D& P1, const Vec2D& P2, const Vec2D& P3, float d, const NColor& color)
+{
+    float currentTime = 0.0f;
+    while (currentTime < d)
+    {
+        Vec2D pos1 = Engine::CatmullRomInterp(currentTime, P0, P1, P2, P3, d);
+        Engine::DrawPoint(pos1.x, pos1.y, color);
+        currentTime += 0.0016f;
+    }
+
+    DrawCircle(P0.x, P0.y, 5.0f, NColor::LightGreen);
+    DrawCircle(P1.x, P1.y, 5.0f, NColor::White);
+    DrawCircle(P2.x, P2.y, 5.0f, NColor::White);
+    DrawCircle(P3.x, P3.y, 5.0f, NColor::Yellow);
+}
+
 size_t Engine::LoadMusic(const std::string& filename)
 {
     const size_t _musId = std::hash<std::string>()(filename);
@@ -639,7 +697,12 @@ void Engine::PlaySFX(size_t id)
 
 void Engine::PlaySFX(size_t id, int loop)
 {
-    Mix_PlayChannel(-1, soundCache[id], loop);
+    PlaySFX(id, -1, loop);
+}
+
+void Engine::PlaySFX(size_t id, int channel, int loop)
+{
+    Mix_PlayChannel(channel, soundCache[id], loop);
 }
 
 void Engine::PauseMusic()
