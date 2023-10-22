@@ -35,6 +35,7 @@ private:
 public:
     virtual ~CTaskCallback() override = default;
     CTaskCallback(TObject* userObject, CallbackFunction callback);
+    CTaskCallback(TObject* userObject, TState* state, CallbackFunction callback);
     bool Update(float dt) override;
 };
 
@@ -46,6 +47,9 @@ public:
     void Clear();
     void Update(float dt);
     bool HasTasks() const;
+
+    template<typename TObject, typename TState>
+    void Add(TObject* userObject, TState* state, bool(TObject::* callback)(float, TState*));
 
     template<typename TObject, typename TState>
     void Add(TObject* userObject, bool(TObject::* callback)(float, TState*));
@@ -71,9 +75,24 @@ inline CTaskCallback<TObject, TState>::CTaskCallback(TObject* userObject, Callba
 }
 
 template<typename TObject, typename TState>
+inline CTaskCallback<TObject, TState>::CTaskCallback(TObject* userObject, TState* state, CallbackFunction callback)
+{
+    m_userObject = userObject;
+    m_stateObject = state;
+    m_callback = callback;
+}
+
+template<typename TObject, typename TState>
 inline bool CTaskCallback<TObject, TState>::Update(float dt)
 {
     return InternalCall(dt, m_stateObject);
+}
+
+template<typename TObject, typename TState>
+inline void CTaskManager::Add(TObject* userObject, TState* state, bool(TObject::* callback)(float, TState*))
+{
+    auto newTask = new CTaskCallback<TObject, TState>(userObject, state, callback);
+    m_taskList.push_back(newTask);
 }
 
 template<typename TObject, typename TState>
