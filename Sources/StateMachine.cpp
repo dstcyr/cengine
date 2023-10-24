@@ -67,7 +67,6 @@ void StateMachine::Clear()
     ClearStack();
     for (auto itr = m_states.begin(); itr != m_states.end(); ++itr)
     {
-        itr->second->OnExit();
         delete itr->second;
     }
 
