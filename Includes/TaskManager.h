@@ -46,6 +46,7 @@ public:
 
     void Clear();
     void Update(float dt);
+    void UpdateSequence(float dt);
     bool HasTasks() const;
 
     template<typename TObject, typename TState>

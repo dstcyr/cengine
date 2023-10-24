@@ -26,6 +26,7 @@ struct Vec2D
     Vec2D& operator*=(float scalar);
     Vec2D& operator/=(float scalar);
     std::string ToString() const;
+    void Set(float x, float y);
     float Length() const;
     float Distance(const Vec2D& other);
     void Normalize();
@@ -33,6 +34,14 @@ struct Vec2D
     void CW();
     void CCW();
     void Reverse();
+    void South();
+    void East();
+    void West();
+    void North();
+    void SouthEast();
+    void SouthWest();
+    void NorthEast();
+    void NorthWest();
     void Rotate(float angle);
     Vec2D GetRotated(float angle) const;
     void SetRotation(float angle);

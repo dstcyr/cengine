@@ -101,3 +101,13 @@ void StateMachine::Reset()
         state->OnEnter();
     }
 }
+
+IState* StateMachine::GetState() const
+{
+    if (!m_stack.empty())
+    {
+        return m_stack.top();
+    }
+
+    return nullptr;
+}

@@ -30,6 +30,8 @@ public:
     void ClearStack();
     void Reset();
 
+    IState* GetState() const;
+
 private:
     std::map<const std::string, IState*> m_states;
     std::stack<IState*> m_stack;

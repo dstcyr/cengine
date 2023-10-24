@@ -134,6 +134,11 @@ void Engine::SetState(const std::string& state)
     currentFSM->SetState(state);
 }
 
+IState* Engine::GetTopState()
+{
+    return currentFSM->GetState();
+}
+
 void Engine::PushState(const std::string& state)
 {
     CHECK(currentFSM);

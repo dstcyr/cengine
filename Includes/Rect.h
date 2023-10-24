@@ -5,6 +5,7 @@ struct Rect
 {
     Rect();
     Rect(T x, T y, T w, T h);
+
     void Set(T x, T y, T w, T h);
 
     T x;

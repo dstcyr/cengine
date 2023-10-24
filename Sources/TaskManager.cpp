@@ -58,6 +58,27 @@ void CTaskManager::Update(float dt)
     }
 }
 
+void CTaskManager::UpdateSequence(float dt)
+{
+    if (!m_taskList.empty())
+    {
+        if (!m_taskList.front()->Update(dt))
+        {
+            auto taskIt = m_taskList.begin();
+            while (taskIt != m_taskList.end())
+            {
+                if ((*taskIt) == m_taskList.front())
+                {
+                    m_taskList.erase(taskIt);
+                    return;
+                }
+
+                taskIt++;
+            }
+        }
+    }
+}
+
 bool CTaskManager::HasTasks() const
 {
     return m_taskList.size() > 0;

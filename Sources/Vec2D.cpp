@@ -141,6 +141,54 @@ void Vec2D::Reverse()
     y = -y;
 }
 
+void Vec2D::South()
+{
+    x = 0.0f;
+    y = std::abs(y);
+}
+
+void Vec2D::East()
+{
+    x = std::abs(x);
+    y = 0.0f;
+}
+
+void Vec2D::West()
+{
+    x = -std::abs(x);
+    y = 0.0f;
+}
+
+void Vec2D::North()
+{
+    x = 0.0f;
+    y = -std::abs(y);
+}
+
+void Vec2D::SouthEast()
+{
+    x = std::abs(x);
+    y = std::abs(y);
+}
+
+void Vec2D::SouthWest()
+{
+    x = -std::abs(x);
+    y = std::abs(y);
+}
+
+void Vec2D::NorthEast()
+{
+    x = std::abs(x);
+    y = -std::abs(y);
+}
+
+void Vec2D::NorthWest()
+{
+    x = -std::abs(x);
+    y = -std::abs(y);
+}
+
 void Vec2D::Rotate(float angle)
 {
     float len = Length();
@@ -263,4 +311,10 @@ Vec2D operator*(float scalar, const Vec2D& other)
 std::string Vec2D::ToString() const
 {
     return "{x = " + std::to_string(x) + ", y = " + std::to_string(y) + "}";
+}
+
+void Vec2D::Set(float x, float y)
+{
+    this->x = x;
+    this->y = y;
 }

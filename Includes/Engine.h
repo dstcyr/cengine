@@ -22,6 +22,16 @@ typedef enum
 
 #if defined(_DEBUG)
     KEY_DEBUG = 44,         // DEBUG
+    KEY_1 = 30,
+    KEY_2 = 31,
+    KEY_3 = 32,
+    KEY_4 = 33,
+    KEY_5 = 34,
+    KEY_6 = 35,
+    KEY_7 = 36,
+    KEY_8 = 37,
+    KEY_9 = 38,
+    KEY_0 = 39,
 #endif
 
 } EKey;
@@ -94,6 +104,7 @@ struct NColor
 };
 
 class StateMachine;
+class IState;
 
 namespace Engine
 {
@@ -142,4 +153,5 @@ namespace Engine
     void SetState(const std::string& state);
     void PushState(const std::string& state);
     void PopState();
+    IState* GetTopState();
 }
