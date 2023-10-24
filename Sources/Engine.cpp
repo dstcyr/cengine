@@ -662,6 +662,7 @@ void Engine::FillRect(int x, int y, int w, int h, const NColor& color)
 {
     SDL_Rect rect = { x, y, w, h };
     SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha);
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     SDL_RenderFillRect(renderer, &rect);
 }
 
