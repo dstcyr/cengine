@@ -1,6 +1,12 @@
 #include "MathUtils.h"
 #include <cmath>
 
+bool Engine::NearEqual(float A, float B)
+{
+    float diff = std::abs(B - A);
+    return diff <= 0.0001f;
+}
+
 float Engine::RandRange(float min, float max)
 {
     return min + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (max - min)));
