@@ -1,6 +1,17 @@
 #include "MathUtils.h"
 #include <cmath>
 
+float Engine::RandRange(float min, float max)
+{
+    return min + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (max - min)));
+}
+
+int Engine::RandRange(int min, int max)
+{
+    int range = max - min + 1;
+    return rand() % range + min;
+}
+
 int Engine::Clamp(int value, int min, int max)
 {
     if (value > max)

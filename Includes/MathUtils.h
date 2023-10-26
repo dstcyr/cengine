@@ -11,6 +11,8 @@ namespace Engine
     const float TO_RADIANS = PI / 180.0f;
     const float TO_DEGREES = 180.0f / PI;
 
+    float RandRange(float min, float max);
+    int RandRange(int min, int max);
     int Clamp(int value, int min, int max);
     float Clamp(float value, float min, float max);
     float DistanceBetweenPoints(float p1x, float p1y, float p2x, float p2y);
