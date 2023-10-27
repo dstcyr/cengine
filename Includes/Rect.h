@@ -7,7 +7,8 @@ struct Rect
     Rect(T x, T y, T w, T h);
 
     void Set(T x, T y, T w, T h);
-    void Center(T* x, T* y);
+    void Center(T* x, T* y) const;
+    T GetDistanceFromCenter(const Rect<T>& other);
 
     T x;
     T y;
@@ -16,10 +17,21 @@ struct Rect
 };
 
 template<typename T>
-void Rect<T>::Center(T* x, T* y)
+void Rect<T>::Center(T* x, T* y) const
 {
     *x = this->x + w / 2;
     *y = this->y + h / 2;
+}
+
+template<typename T>
+inline T Rect<T>::GetDistanceFromCenter(const Rect<T>& other)
+{
+    T x, y;
+    Center(&x, &y);
+
+    T ox, oy;
+    other.Center(&ox, &oy);
+    return 0.0f;
 }
 
 template<typename T>
