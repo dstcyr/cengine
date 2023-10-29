@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Animation.cpp" />
+    <ClCompile Include="Sources\AStar.cpp" />
     <ClCompile Include="Sources\Collision.cpp" />
     <ClCompile Include="Sources\Delegate.cpp" />
     <ClCompile Include="Sources\Engine.cpp" />
@@ -164,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\Animation.h" />
+    <ClInclude Include="Includes\AStar.h" />
     <ClInclude Include="Includes\Collision.h" />
     <ClInclude Include="Includes\Profiler.h" />
     <ClInclude Include="Includes\Delegate.h" />

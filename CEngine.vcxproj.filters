@@ -51,6 +51,9 @@
     <ClCompile Include="Sources\Stopwatch.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\AStar.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\File.h">
@@ -96,6 +99,9 @@
       <Filter>Includes</Filter>
     </ClInclude>
     <ClInclude Include="Includes\Stopwatch.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\AStar.h">
       <Filter>Includes</Filter>
     </ClInclude>
   </ItemGroup>
