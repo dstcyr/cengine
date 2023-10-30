@@ -29,6 +29,7 @@ struct Vec2D
     void Set(float x, float y);
     float Length() const;
     float Distance(const Vec2D& other);
+    static float Distance(float x1, float y1, float x2, float y2);
     void Normalize();
     Vec2D GetNormalized() const;
     void CW();

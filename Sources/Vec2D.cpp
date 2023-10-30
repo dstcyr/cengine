@@ -109,6 +109,14 @@ float Vec2D::Distance(const Vec2D& other)
     return std::sqrtf(tLen);
 }
 
+float Vec2D::Distance(float x1, float y1, float x2, float y2)
+{
+    float diffX = x2 - x1;
+    float diffY = y2 - y1;
+    float tLen = diffX * diffX + diffY * diffY;
+    return std::sqrtf(tLen);
+}
+
 void Vec2D::Normalize()
 {
     float invLen = 1.0f / Length();
