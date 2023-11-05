@@ -104,5 +104,8 @@
     <ClInclude Include="Includes\AStar.h">
       <Filter>Includes</Filter>
     </ClInclude>
+    <ClInclude Include="Includes\VectorHelper.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

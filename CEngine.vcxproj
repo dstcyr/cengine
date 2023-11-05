@@ -180,6 +180,7 @@
     <ClInclude Include="Includes\TaskManager.h" />
     <ClInclude Include="Includes\tinyxml2.h" />
     <ClInclude Include="Includes\Vec2D.h" />
+    <ClInclude Include="Includes\VectorHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
