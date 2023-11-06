@@ -120,7 +120,9 @@ namespace Engine
     size_t LoadMusic(const std::string& filename);
     void FillRect(int x, int y, int w, int h, const NColor& color);
     void FillRect(float x, float y, float w, float h, const NColor& color);
+    void FillRect(const Rect<float>& rect, const NColor& color);
     void DrawRect(float x, float y, float w, float h, const NColor& color);
+    void DrawRect(const Rect<float>& rect, const NColor& color);
     void DrawRect(int x, int y, int w, int h, const NColor& color);
     void DrawString(const std::string& text, size_t fontId, float x, float y);
     void DrawTexture(size_t id, bool hflip, bool vflip, const NColor& color);

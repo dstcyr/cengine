@@ -356,6 +356,11 @@ void Engine::FillRect(float x, float y, float w, float h, const NColor& color)
     );
 }
 
+void Engine::FillRect(const Rect<float>& rect, const NColor& color)
+{
+    FillRect(rect.x, rect.y, rect.w, rect.h, color);
+}
+
 void Engine::DrawRect(float x, float y, float w, float h, const NColor& color)
 {
     int fx = static_cast<int>(x);
@@ -364,6 +369,11 @@ void Engine::DrawRect(float x, float y, float w, float h, const NColor& color)
     int fh = static_cast<int>(h);
 
     DrawRect(fx, fy, fw, fh, color);
+}
+
+void Engine::DrawRect(const Rect<float>& rect, const NColor& color)
+{
+    DrawRect(rect.x, rect.y, rect.w, rect.h, color);
 }
 
 void Engine::DrawRect(int x, int y, int w, int h, const NColor& color)
