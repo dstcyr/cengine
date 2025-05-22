@@ -159,8 +159,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Includes\UINode.cpp" />
-    <ClCompile Include="Includes\UIPadding.cpp" />
     <ClCompile Include="Sources\Animation.cpp" />
     <ClCompile Include="Sources\AStar.cpp" />
     <ClCompile Include="Sources\Collision.cpp" />
@@ -175,6 +173,10 @@
     <ClCompile Include="Sources\Stopwatch.cpp" />
     <ClCompile Include="Sources\TaskManager.cpp" />
     <ClCompile Include="Sources\tinyxml2.cpp" />
+    <ClCompile Include="Sources\UI\UIImage.cpp" />
+    <ClCompile Include="Sources\UI\UINode.cpp" />
+    <ClCompile Include="Sources\UI\UIPadding.cpp" />
+    <ClCompile Include="Sources\UI\UISizeableNode.cpp" />
     <ClCompile Include="Sources\Vec2D.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -193,8 +195,10 @@
     <ClInclude Include="Includes\Stopwatch.h" />
     <ClInclude Include="Includes\TaskManager.h" />
     <ClInclude Include="Includes\tinyxml2.h" />
-    <ClInclude Include="Includes\UINode.h" />
-    <ClInclude Include="Includes\UIPadding.h" />
+    <ClInclude Include="Includes\UI\UIImage.h" />
+    <ClInclude Include="Includes\UI\UINode.h" />
+    <ClInclude Include="Includes\UI\UIPadding.h" />
+    <ClInclude Include="Includes\UI\UISizeableNode.h" />
     <ClInclude Include="Includes\Vec2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
