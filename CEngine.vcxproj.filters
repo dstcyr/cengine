@@ -7,6 +7,12 @@
     <Filter Include="Sources">
       <UniqueIdentifier>{a82067c7-ce2a-462b-a9c2-9cb505520cf7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Includes\UI">
+      <UniqueIdentifier>{97a8b9e9-d53c-45ea-bc2a-db24b9f50f64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\UI">
+      <UniqueIdentifier>{b699c825-f97e-43a3-826f-37083b764919}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\File.cpp">
@@ -53,6 +59,12 @@
     </ClCompile>
     <ClCompile Include="Sources\AStar.cpp">
       <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\UIPadding.cpp">
+      <Filter>Sources\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\UINode.cpp">
+      <Filter>Sources\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +115,12 @@
     </ClInclude>
     <ClInclude Include="Includes\AStar.h">
       <Filter>Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\UINode.h">
+      <Filter>Includes\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\UIPadding.h">
+      <Filter>Includes\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
